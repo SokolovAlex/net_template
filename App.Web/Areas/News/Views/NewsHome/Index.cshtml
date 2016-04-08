@@ -1,0 +1,22 @@
+﻿@model App.DTO.ViewModels.News.NewsHomeViewModel
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Areas/News/Views/Shared/_NewsLayout.cshtml";
+}
+
+<h2>News</h2>
+
+Total news: @Model.Total
+
+<br /><br />
+
+@foreach (var news in Model.News)
+{
+    <div>
+        <a href="@Url.Action("Details", "NewsHome", new {id = news.Id})" class="news-title">@news.Name</a>
+        @Html.Raw(news.Text)
+        <small>@news.Date.ToString("d") | <a href="@Url.Action("Details", "NewsHome", new {id = news.Id})">Read more</a></small>
+    </div>
+    <br/>
+}
+

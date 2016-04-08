@@ -1,0 +1,17 @@
+﻿@model App.DTO.Models.Blog.BlogModel
+
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Areas/News/Views/Shared/_NewsLayout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+<a href="@Url.Action("Index", "BlogHome")">Back</a>
+
+<br /><br />
+
+<div>
+    @Html.Raw(Model.Text)    
+</div>
+

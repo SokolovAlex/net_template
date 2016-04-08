@@ -1,0 +1,43 @@
+﻿using System.Linq;
+using App.DAL.Concrete.Base;
+using App.DAL.Abstract.ExampleModule;
+using App.DAL.Entities.ExampleModule;
+using App.DTO.Models.ExampleModule;
+
+namespace App.DAL.Concrete.ExampleModule
+{
+    public class ExampleRepository : BaseRepository, IExampleRepository
+    {
+        public static ExampleModel MapToModel(ExampleEntity x)
+        {
+            var model = new ExampleModel
+            {
+                Id = x.Id,
+                IsActive = x.IsActive,
+                Name = x.Name
+            };
+
+            return model;
+        }
+
+        public IQueryable<ExampleModel> GetBy()
+        {
+            return Context.Example.Select(x => new ExampleModel
+            {
+                Id = x.Id,
+                IsActive = x.IsActive,
+                Name = x.Name
+            });
+        }
+
+        public ExampleModel GetById(int id)
+        {
+            return GetBy().FirstOrDefault(x => x.Id == id);
+        }
+
+        public IQueryable<ExampleModel> GetAll()
+        {
+            return GetBy().Where(x => x.IsActive).OrderBy(x => x.Name);
+        }
+    }
+}

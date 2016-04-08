@@ -1,0 +1,9 @@
+﻿using App.DTO.Models.Base;
+
+namespace App.DTO.Models.ExampleModule
+{
+    public class ExampleModel : BaseModel
+    {
+        public string Name { get; set; }
+    }
+}

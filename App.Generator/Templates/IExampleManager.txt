@@ -1,0 +1,9 @@
+﻿using App.DAL.Abstract.ExampleModule;
+
+namespace App.BLL.Abstract.Managers.ExampleModule
+{
+    public interface IExampleManager
+    {
+        IExampleRepository Repository { get; set; }
+    }
+}

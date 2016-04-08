@@ -1,0 +1,31 @@
+﻿@model App.DTO.ViewModels.Base.Auth.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary(true, null)
+    </div>
+
+    <div>
+        Email: 
+        @Html.TextBoxFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+    </div>
+
+    <div>
+        Password: 
+        @Html.TextBoxFor(x => x.Password)
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+
+    <br/>
+
+    <button class="btn btn-default" type="submit">Login</button>
+}

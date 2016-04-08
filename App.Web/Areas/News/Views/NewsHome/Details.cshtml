@@ -1,0 +1,17 @@
+﻿@model NewsModel
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Areas/News/Views/Shared/_NewsLayout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<a href="@Url.Action("Index", "NewsHome")">Back</a>
+
+<br /><br />
+
+<div>
+    @Html.Raw(Model.Text)    
+</div>
+

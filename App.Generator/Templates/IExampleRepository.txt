@@ -1,0 +1,13 @@
+﻿using System.Linq;
+using App.DTO.Models.ExampleModule;
+
+namespace App.DAL.Abstract.ExampleModule
+{
+    public interface IExampleRepository
+    {
+        IQueryable<ExampleModel> GetBy();
+
+        ExampleModel GetById(int id);
+        IQueryable<ExampleModel> GetAll();
+    }
+}

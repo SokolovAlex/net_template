@@ -1,0 +1,11 @@
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using App.DAL.Entities.Base;
+
+namespace App.DAL.Entities.ExampleModule
+{
+    [Table("Example")]
+    public class ExampleEntity : BaseEntity
+    {
+        public string Name { get; set; }
+    }
+}

@@ -1,0 +1,16 @@
+﻿using Autofac;
+using App.BLL.Abstract.Managers.ExampleModule;
+using App.DAL.Abstract.ExampleModule;
+
+namespace App.BLL.Concrete.Managers.ExampleModule
+{
+    public class ExampleManager : IExampleManager
+    {
+        public IExampleRepository Repository { get; set; }
+
+        public ExampleManager()
+        {
+            Repository = IoC.Instance.Resolve<IExampleRepository>();
+        }
+    }
+}

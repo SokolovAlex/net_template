@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/css")
+    @RenderSection("css", false)
+</head>
+<body>
+
+    <div class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">TemplateModular</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="@Url.RouteUrl("News_Default", new { Controller = "NewsHome", Action = "Index" })">News</a></li>
+                    <li><a href="@Url.RouteUrl("Blog_Default", new { Controller = "BlogHome", Action = "Index" })">Blog</a></li>
+                    <li><a href="@Url.RouteUrl("Feedback_Default", new {Controller = "FeedbackHome", Action = "Index"})">Feedback</a></li>
+                    <li><a href="@Url.RouteUrl("Admin_Default", new { Controller = "AdminHome", Action = "Index" })">(Admin)</a></li>
+                    <li><a href="@Url.RouteUrl("Auth_Default", new { Controller="AuthHome", Action="Index" })">(Auth)</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/js")
+    @Scripts.Render("~/app")
+
+    @RenderSection("js", false)
+
+</body>
+</html>

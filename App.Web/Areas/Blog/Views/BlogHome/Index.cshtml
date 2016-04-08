@@ -1,0 +1,20 @@
+﻿@model IEnumerable<App.DTO.Models.Blog.BlogModel>
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Areas/Blog/Views/Shared/_BlogLayout.cshtml";
+}
+
+<h2>Blog</h2>
+
+<br/>
+
+@foreach (var blogPost in Model)
+{
+    <div>
+        <a href="@Url.Action("Details", "BlogHome", new {id = blogPost.Id})" class="blog-title">@blogPost.Title</a>
+        <br/>
+        <small>@blogPost.Date.ToString("d") | @blogPost.User.Nickname | <a href="@Url.Action("Details", "BlogHome", new {id = blogPost.Id})">Read more</a></small>
+    </div>
+
+    <br />
+}

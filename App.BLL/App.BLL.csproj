@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F160C2A1-CB49-4DC3-88EE-2FBF5AAB40DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>App.BLL</RootNamespace>
+    <AssemblyName>App.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.1.0.488\lib\net45\StackExchange.Redis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis.Extensions.Core, Version=1.1.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.Extensions.Core.1.1.14.0\lib\net45\StackExchange.Redis.Extensions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StackExchange.Redis.Extensions.Newtonsoft, Version=1.1.11.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\StackExchange.Redis.Extensions.Newtonsoft.1.1.11.0\lib\net45\StackExchange.Redis.Extensions.Newtonsoft.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\Helpers\IRedisCacheHelper.cs" />
+    <Compile Include="Concrete\Managers\Forum\ForumTopicManager.cs" />
+    <Compile Include="Abstract\Managers\Forum\IForumTopicManager.cs" />
+    <Compile Include="Concrete\Managers\Photo\PhotoFileManager.cs" />
+    <Compile Include="Abstract\Managers\Photo\IPhotoFileManager.cs" />
+    <Compile Include="Concrete\Managers\Blog\BlogManager.cs" />
+    <Compile Include="Abstract\Managers\Blog\IBlogManager.cs" />
+    <Compile Include="Concrete\Helpers\RedisCacheHelper.cs" />
+    <Compile Include="Concrete\Helpers\UserHelper.cs" />
+    <Compile Include="Concrete\Managers\News\NewsManager.cs" />
+    <Compile Include="Abstract\Managers\News\INewsManager.cs" />
+    <Compile Include="Abstract\Helpers\IImageHelper.cs" />
+    <Compile Include="Abstract\Managers\Base\ICategoryManager.cs" />
+    <Compile Include="Abstract\Managers\Base\IReferenceManager.cs" />
+    <Compile Include="Abstract\Managers\Base\IUserManager.cs" />
+    <Compile Include="BLL_IoCModule.cs" />
+    <Compile Include="Concrete\Helpers\ImageHelper.cs" />
+    <Compile Include="Concrete\Helpers\SettingsHelper.cs" />
+    <Compile Include="Concrete\Managers\Base\CategoryManager.cs" />
+    <Compile Include="Concrete\Managers\Base\ReferenceManager.cs" />
+    <Compile Include="Concrete\Managers\Base\UserManager.cs" />
+    <Compile Include="IoC.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App.DAL\App.DAL.csproj">
+      <Project>{a756be7c-7502-4037-990a-c711e28d4611}</Project>
+      <Name>App.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.DTO\App.DTO.csproj">
+      <Project>{ec581251-c65c-4c72-9b2a-3b0a0b3f0c24}</Project>
+      <Name>App.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Abstract\Managers\Admin\" />
+    <Folder Include="Abstract\Managers\Auth\" />
+    <Folder Include="Abstract\Managers\Feedback\" />
+    <Folder Include="Concrete\Managers\Admin\" />
+    <Folder Include="Concrete\Managers\Auth\" />
+    <Folder Include="Concrete\Managers\Feedback\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
