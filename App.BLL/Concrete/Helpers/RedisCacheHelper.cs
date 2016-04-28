@@ -8,8 +8,8 @@ namespace App.BLL.Concrete.Helpers
 {
     public class RedisCacheHelper : IRedisCacheHelper
     {
-        private NewtonsoftSerializer _serializer { get; }
-        private StackExchangeRedisCacheClient _cacheClient { get; }
+        private NewtonsoftSerializer _serializer { get; set; }
+        private StackExchangeRedisCacheClient _cacheClient { get; set; }
 
         public RedisCacheHelper()
         {

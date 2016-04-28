@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Redis test</h4>
+
+<form>
+    <div class="form-group">
+        <label for="keypart1">keypart 1</label>
+        <input type="text" class="form-control" id="keypart1" name="keypart1" placeholder="keypart2">
+    </div>
+    <div class="form-group">
+        <label for="keypart2">keypart 2</label>
+        <input type="text" class="form-control" id="keypart2" name="keypart2" placeholder="keypart2">
+    </div>
+
+    <div class="form-group">
+        <label for="keypart3">keypart 3</label>
+        <input type="text" class="form-control" id="keypart3" name="keypart3" placeholder="keypart3">
+    </div>
+
+    <div class="save btn btn-success">Save in Redis</div>
+
+    <div class="get btn btn-default">Get from Redis</div>
+
+    <div class="delete btn btn-danger">Delete in Redis</div>
+
+    <br />
+
+    <div class="label label-info screen_amount"></div>
+
+    <div class="label label-default screen_redis"></div>
+
+</form>
+
+
+@section js {
+    <script type="text/javascript">
+        $(".save").on('click', function () {
+            var data = $("form").serialize();
+            $.ajax({ 
+                url: '@Url.RouteUrl("Test_default", new { Controller="Redis", Action="Save" })',
+                data: data
+            })
+            .then(function (response) {
+                $('.screen_redis').text(response);
+            });
+        });
+
+
+        $(".delete").on('click', function () {
+            var data = $("form").serialize();
+            $.ajax({ url: '@Url.RouteUrl("Test_default", new { Controller="Redis", Action="Delete" })', data: data })
+                .then(function (response) {
+                    $('.screen_redis').text(response);
+                });
+        });
+
+
+        $(".get").on('click', function () {
+            var data = $("form").serialize();
+            $.ajax({ url: '@Url.RouteUrl("Test_default", new { Controller="Redis", Action="Get" })', data: data })
+                .then(function (response) {
+                    $('.screen_redis').text(response);
+                    $('.screen_amount').text(JSON.parse(response).length);
+                });
+        });
+    </script>
+}
