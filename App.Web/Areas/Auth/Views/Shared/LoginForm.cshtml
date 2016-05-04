@@ -1,0 +1,40 @@
+﻿@model App.Web.Areas.Auth.Services.AuthFormViewModel
+@{ 
+    Layout = null;
+}
+
+<form class="login_form">
+
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control input-sm" id="email" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control input-sm" id="password" placeholder="Password">
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="social_icons_wrapper">
+            <div class="social_icons">
+                <a class="icon" href="@Model.GoogleUrl"> <i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                <a class="icon" href="@Model.FacebookUrl"> <i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a class="icon" href="@Model.VkUrl"> <i class="fa fa-vk" aria-hidden="true"></i></a>
+                <a class="icon" href="@Model.InstagramUrl"> <i class="fa fa-instagram" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="btn btn-default signin_btn">sign in</div>
+    </div>
+
+</form>
+

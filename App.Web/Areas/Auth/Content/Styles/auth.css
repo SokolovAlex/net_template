@@ -1,0 +1,30 @@
+﻿.login_form {
+    display: none;
+    position:absolute;
+    background-color: rgb(231, 231, 231);
+    width: 250px;
+    padding: 5px;
+}
+
+.login_form .signin_btn{
+    display:inline-block;
+    float: right;
+}
+
+.login_form .social_icons .icon{
+    margin: 2px;
+    vertical-align: middle;
+    color:black;
+}
+
+.login_form .social_icons_wrapper{
+    display:inline-block;
+    width: 150px;
+}
+
+.login_form .social_icons{
+    margin: auto;
+    width: 80px;
+    line-height: 30px;
+}
+

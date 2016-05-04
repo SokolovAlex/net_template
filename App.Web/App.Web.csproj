@@ -18,7 +18,7 @@
     <AssemblyName>App.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -187,6 +187,11 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthHomeController.cs" />
+    <Compile Include="Areas\Auth\Services\AuthFormViewModel.cs" />
+    <Compile Include="Areas\Auth\Services\AuthResponse.cs" />
+    <Compile Include="Areas\Auth\Services\GoogleHelper.cs" />
+    <Compile Include="Areas\Auth\Services\Interfaces\ISocialHelper.cs" />
+    <Compile Include="Areas\Auth\Services\SocialHelper.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
     <Compile Include="Areas\Base\Controllers\BaseHomeController.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
@@ -211,6 +216,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Auth\Content\Styles\auth.css" />
     <Content Include="Areas\Blog\Content\Styles\Blog.css" />
     <Content Include="Areas\News\Content\Styles\News.css" />
     <Compile Include="Areas\Test\Models\TestRedisRequest.cs" />
@@ -259,6 +265,7 @@
     <Content Include="Areas\Test\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Test\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Test\Views\Redis\Index.cshtml" />
+    <Content Include="Areas\Auth\Views\Shared\LoginForm.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -300,8 +307,8 @@
     <Folder Include="Areas\Admin\Content\Styles\" />
     <Folder Include="Areas\Admin\Scripts\" />
     <Folder Include="Areas\Auth\Content\Images\" />
-    <Folder Include="Areas\Auth\Content\Styles\" />
     <Folder Include="Areas\Auth\Scripts\" />
+    <Folder Include="Areas\Auth\Views\NewFolder1\" />
     <Folder Include="Areas\Base\Content\Images\" />
     <Folder Include="Areas\Base\Scripts\" />
     <Folder Include="Areas\Blog\Content\Images\" />
@@ -362,7 +369,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>25339</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://boilerplate.loc</IISUrl>
+          <IISUrl>http://localhost:25339/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -8,7 +8,7 @@ namespace App.Web.Areas.Auth
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
-            context.MapRoute("Auth_Default", "Auth/{controller}/{action}/{id}", new { controller= "AuthHome", action = "Index", id = UrlParameter.Optional });
+            context.MapRoute("Auth_Default", "Auth/{controller}/{action}/{id}", new { controller= "Auth", action = "Index", id = UrlParameter.Optional });
         }
     }
 }
