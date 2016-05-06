@@ -8,5 +8,10 @@
         {
             Context = new DataContext();
         }
+
+        public void Commit()
+        {
+            Context.SaveChanges();
+        }
     }
 }

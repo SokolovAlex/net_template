@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using App.Web.Areas.Auth.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -69,6 +70,38 @@ namespace App.Web.Areas.Auth.Services
             this.created = DateTime.Now;
         }
 
+        public GoogleProfile GetProfileInfo()
+        {
+            var query = String.Format("https://www.googleapis.com/plus/v1/people/me?key={0}", access_token);
+            var request = (HttpWebRequest)WebRequest.Create(query);
+
+            request.ContentType = "application/x-www-form-urlencoded";
+
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+           var profile = JsonConvert.DeserializeObject<GoogleProfile>(responseString);
+
+            return profile;
+        }
+
+        public GoogleProfile2 GetProfileInfo2()
+        {
+            var ub = new UriBuilder("https://www.googleapis.com/oauth2/v1/userinfo?alt=json");
+            var httpValueCollection = HttpUtility.ParseQueryString(ub.Query);
+
+            httpValueCollection.Add("access_token", access_token);
+
+            ub.Query = httpValueCollection.ToString();
+            var request = WebRequest.Create(ub.Uri.ToString());
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+
+            var profile = JsonConvert.DeserializeObject<GoogleProfile2>(responseString);
+
+            return profile;
+        }
+
         public static AuthResponse Exchange(string authCode, string clientid, string secret, string redirectURI)
         {
 
@@ -110,7 +143,5 @@ namespace App.Web.Areas.Auth.Services
             string oauth = string.Format("https://accounts.google.com/o/oauth2/auth?client_id={0}&redirect_uri={1}&scope={2}&response_type=code", clientId, redirectUri, scopes);
             return new Uri(oauth);
         }
-
-
     }
 }

@@ -187,6 +187,8 @@
     <Compile Include="Areas\Admin\Controllers\AdminHomeController.cs" />
     <Compile Include="Areas\Auth\AuthAreaRegistration.cs" />
     <Compile Include="Areas\Auth\Controllers\AuthHomeController.cs" />
+    <Compile Include="Areas\Auth\Mappers\UserMapper.cs" />
+    <Compile Include="Areas\Auth\Models\GoogleProfile.cs" />
     <Compile Include="Areas\Auth\Services\AuthFormViewModel.cs" />
     <Compile Include="Areas\Auth\Services\AuthResponse.cs" />
     <Compile Include="Areas\Auth\Services\GoogleHelper.cs" />
@@ -217,6 +219,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Auth\Content\Styles\auth.css" />
+    <Content Include="Areas\Auth\Scripts\AuthModule.js" />
+    <Content Include="Areas\Auth\Scripts\index.js" />
     <Content Include="Areas\Blog\Content\Styles\Blog.css" />
     <Content Include="Areas\News\Content\Styles\News.css" />
     <Compile Include="Areas\Test\Models\TestRedisRequest.cs" />
@@ -228,14 +232,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
-    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Areas\Base\Content\Styles\Base.css" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
@@ -266,6 +266,11 @@
     <Content Include="Areas\Test\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Test\Views\Redis\Index.cshtml" />
     <Content Include="Areas\Auth\Views\Shared\LoginForm.cshtml" />
+    <Content Include="Fonts\fontawesome-webfont.eot" />
+    <Content Include="Fonts\fontawesome-webfont.ttf" />
+    <Content Include="Fonts\fontawesome-webfont.woff" />
+    <Content Include="Fonts\fontawesome-webfont.woff2" />
+    <Content Include="Fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -307,7 +312,6 @@
     <Folder Include="Areas\Admin\Content\Styles\" />
     <Folder Include="Areas\Admin\Scripts\" />
     <Folder Include="Areas\Auth\Content\Images\" />
-    <Folder Include="Areas\Auth\Scripts\" />
     <Folder Include="Areas\Auth\Views\NewFolder1\" />
     <Folder Include="Areas\Base\Content\Images\" />
     <Folder Include="Areas\Base\Scripts\" />

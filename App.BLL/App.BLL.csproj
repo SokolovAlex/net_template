@@ -92,7 +92,6 @@
     <Compile Include="Concrete\Managers\Blog\BlogManager.cs" />
     <Compile Include="Abstract\Managers\Blog\IBlogManager.cs" />
     <Compile Include="Concrete\Helpers\RedisCacheHelper.cs" />
-    <Compile Include="Concrete\Helpers\UserHelper.cs" />
     <Compile Include="Concrete\Managers\News\NewsManager.cs" />
     <Compile Include="Abstract\Managers\News\INewsManager.cs" />
     <Compile Include="Abstract\Helpers\IImageHelper.cs" />
@@ -105,6 +104,8 @@
     <Compile Include="Concrete\Managers\Base\CategoryManager.cs" />
     <Compile Include="Concrete\Managers\Base\ReferenceManager.cs" />
     <Compile Include="Concrete\Managers\Base\UserManager.cs" />
+    <Compile Include="Helpers\Interfaces\IUserHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

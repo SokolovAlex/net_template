@@ -1,4 +1,6 @@
-﻿using App.Web.Areas.Auth.Services;
+﻿using App.BLL.Helpers;
+using App.DTO.Models.Base;
+using App.Web.Areas.Auth.Services;
 using System.Configuration;
 using System.Web.Mvc;
 
@@ -46,6 +48,7 @@ namespace App.Web.Areas.Auth.Controllers
 
         public ActionResult GoogleCallback(string code)
         {
+            var helper = new UserHelper();
             var conf = ConfigurationManager.AppSettings;
             var GoogleUrl = AuthResponse.GetAutenticationURI(conf["ClientIdGoogle"], conf["CallbackGoogle"]);
 
@@ -55,6 +58,17 @@ namespace App.Web.Areas.Auth.Controllers
             if (access.Access_token == null) {
                 return Redirect("ErrorPage");
             }
+
+            var profile = access.GetProfileInfo2();
+
+            helper.SaveUser(new UserModel {
+                Email = profile.email,
+                Name = profile.given_name,
+                IsActive = true,
+                Surname = profile.family_name,
+                Nickname = profile.email,
+                Password = profile.email
+            });
 
             return RedirectToAction("/");
         }
