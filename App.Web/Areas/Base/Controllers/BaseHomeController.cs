@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using App.Web.Filters;
+using System.Web.Mvc;
 
 namespace App.Web.Areas.Base.Controllers
 {
@@ -6,6 +7,10 @@ namespace App.Web.Areas.Base.Controllers
     {
         public ActionResult Index()
         {
+            var isAuth = FakeAuth.Auth(this.HttpContext);
+            if (isAuth) {
+                return View();
+            }
             return View();
         }
     }

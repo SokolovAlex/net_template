@@ -13,6 +13,10 @@ using App.BLL.Concrete.Managers.Photo;
 using App.BLL.Abstract.Managers.Forum;
 using App.BLL.Concrete.Helpers;
 using App.BLL.Concrete.Managers.Forum;
+using App.BLL.Common.Concrete.Helpers;
+using App.DTO.Models.Base;
+using App.BLL.Helpers.Interfaces;
+using App.BLL.Helpers;
 
 namespace App.BLL
 {
@@ -27,8 +31,10 @@ namespace App.BLL
             builder.RegisterType<UserManager>().As<IUserManager>();
             builder.RegisterType<CategoryManager>().As<ICategoryManager>();
             builder.RegisterType<ReferenceManager>().As<IReferenceManager>();
+            builder.RegisterGeneric(typeof(RedisRepository<>)).As(typeof(IRedisRepository<>)).SingleInstance();
+            builder.RegisterType<HashHelper>().As<IHashHelper>();
             #endregion
-
+            
             #region News
             builder.RegisterType<NewsManager>().As<INewsManager>();
             #endregion

@@ -16,6 +16,7 @@ namespace App.DAL.Concrete.Base
                 Email = x.Email,
                 Password = x.Password,
                 Name = x.Name,
+                Salt = x.Salt,
                 Surname = x.Surname
             };
 
@@ -31,6 +32,7 @@ namespace App.DAL.Concrete.Base
                 Email = x.Email,
                 Password = x.Password,
                 Name = x.Name,
+                Salt = x.Salt,
                 Surname = x.Surname
             });
         }
@@ -45,22 +47,30 @@ namespace App.DAL.Concrete.Base
             return GetBy().Where(x => x.IsActive).OrderBy(x => x.Name);
         }
 
-        public int Save(UserModel model)
+        public UserEntity Save(UserModel model)
         {
-            var entity = new UserEntity
-            {
-                Id = model.Id,
-                IsActive = model.IsActive,
-                Email = model.Email,
-                Password = model.Password,
-                Name = model.Name,
-                Surname = model.Surname,
-                Nickname = model.Email
-            };
+            var dbuser = Context.User.FirstOrDefault(x => x.Email == model.Email);
 
-            Context.User.Add(entity);
+            if (dbuser == null) {
 
-            return entity.Id;
+                var entity = new UserEntity
+                {
+                    Id = model.Id,
+                    IsActive = model.IsActive,
+                    Email = model.Email,
+                    Password = model.Password,
+                    Name = model.Name,
+                    Surname = model.Surname,
+                    Salt = model.Salt,
+                    Nickname = model.Email
+                };
+
+                Context.User.Add(entity);
+
+                return entity;
+            }
+
+            return dbuser;
         }
     }
 }

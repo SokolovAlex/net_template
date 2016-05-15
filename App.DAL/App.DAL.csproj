@@ -92,6 +92,10 @@
     <Compile Include="Migrations\201601280522520_Update.Designer.cs">
       <DependentUpon>201601280522520_Update.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605080901314_salt.cs" />
+    <Compile Include="Migrations\201605080901314_salt.Designer.cs">
+      <DependentUpon>201605080901314_salt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601280522520_Update.resx">
       <DependentUpon>201601280522520_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605080901314_salt.resx">
+      <DependentUpon>201605080901314_salt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -20,14 +20,21 @@
                     <li><a href="@Url.RouteUrl("Blog_Default", new { Controller = "BlogHome", Action = "Index" })">Blog</a></li>
                     <li><a href="@Url.RouteUrl("Feedback_Default", new { Controller = "FeedbackHome", Action = "Index" })">Feedback</a></li>
                     <li><a href="@Url.RouteUrl("Admin_Default", new { Controller = "AdminHome", Action = "Index" })">(Admin)</a></li>
-                    <li>
-                        @*<a href="@Url.RouteUrl("Auth_Default", new { Controller="Auth", Action="Index" })">(Auth)</a>*@
-                        <a href="#" class="login_menu"> log in </a>
-                        @{ Html.RenderAction("LoginForm", "Auth", new { area = "Auth" }); }
-
-                        @*@Html.Partial("~/Areas/Auth/Views/Auth/LoginForm.cshtml")*@
-                    </li>
                     <li><a href="@Url.RouteUrl("Test_Default", new { Controller="Redis", Action="Index" })">(Redis Test)</a></li>
+                    
+                    @if (!HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <a href="#" class="login_menu"> log in </a>
+                            @{ Html.RenderAction("LoginForm", "Auth", new { area = "Auth" }); }
+                        </li>
+                    } else {
+
+                        <li>!!!!</li>
+
+                    }
+
+
                 </ul>
             </div>
         </div>
@@ -39,8 +46,6 @@
 
     @Scripts.Render("~/js")
     @Scripts.Render("~/app")
-
     @RenderSection("js", false)
-
 </body>
 </html>

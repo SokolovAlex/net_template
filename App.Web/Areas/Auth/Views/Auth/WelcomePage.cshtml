@@ -1,0 +1,21 @@
+﻿@model App.DTO.Models.Base.SessionModel
+@{
+    ViewBag.Title = "WelcomePage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Welcome, @Model.DisplayName</h2>
+
+<img src="@Model.Avatar"/>
+
+@section js {
+    <script>
+        $(document).ready(function () {
+            var config = window.config,
+                name = config.name;
+
+            window[name] = window[name] || {};
+            var authForm = window[name].authForm;
+            authForm.setToken("@Model.AssessToken");
+        });
+    </script>
+}

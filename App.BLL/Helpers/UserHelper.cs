@@ -15,6 +15,19 @@ namespace App.BLL.Helpers
         public UserHelper() {
         }
 
+        private SessionModel GetSessionUserModel(UserModel user)
+        {
+            var helper = new HashHelper();
+            return new SessionModel
+            {
+                AssessToken = helper.GetSHA512Hash(helper.GetPassword(16)),
+                ExpirationTime = DateTime.Now.AddHours(30),
+                RefreshToken = helper.GetSHA512Hash(helper.GetPassword(16)),
+                Avatar = user.Avatar,
+                DisplayName = user.Name + " " + user.Surname
+            };
+        }
+
         public UserModel GetUSerFromGoogleProfile()
         {
             throw new NotImplementedException();
@@ -24,11 +37,41 @@ namespace App.BLL.Helpers
         {
             var rep = new UserRepository();
 
-            var userId = rep.Save(user);
+            var userDb = rep.Save(user);
 
             rep.Commit();
 
-            return userId;
+            return userDb.Id;
         }
+
+        //public SessionModel SessionCreate(UserModel user)
+        //{
+
+        //    var model =
+        //        GetSessionUserModel(user);
+
+        //    var redis = IoC.Instance.Resolve<IRedisRepository<UserSessionModel>>(
+        //         new NamedParameter("host", AppSettingsHelper.Instance.AppSettings[Enums.AppSettings.RedisHost].Value),
+        //         new NamedParameter("database", int.Parse(AppSettingsHelper.Instance.AppSettings[Enums.AppSettings.RedisDb].Value)),
+        //         new NamedParameter("tableName", "Session"));
+
+        //    var assessTokenRedis = IoC.Instance.Resolve<IRedisRepository<string>>(
+        //        new NamedParameter("host", AppSettingsHelper.Instance.AppSettings[Enums.AppSettings.RedisHost].Value),
+        //        new NamedParameter("database", int.Parse(AppSettingsHelper.Instance.AppSettings[Enums.AppSettings.RedisDb].Value)),
+        //        new NamedParameter("tableName", "AceesToken"));
+
+        //    var refreshTokenRedis = IoC.Instance.Resolve<IRedisRepository<string>>(
+        //        new NamedParameter("host", AppSettingsHelper.Instance.AppSettings[Enums.AppSettings.RedisHost].Value),
+        //        new NamedParameter("database", int.Parse(AppSettingsHelper.Instance.AppSettings[Enums.AppSettings.RedisDb].Value)),
+        //        new NamedParameter("tableName", "RefreshToken"));
+
+
+        //    redis.Create(model, model.UserModel.HashId);
+        //    assessTokenRedis.Create(model.UserModel.HashId, model.Session.AssessToken);
+        //    refreshTokenRedis.Create(model.UserModel.HashId, model.Session.RefreshToken);
+        //    return model.Session;
+        //    /*assessTokenRedis.Create(token.GetPassword(16), model.UserModel.HashId);
+        //    refreshTokenRedis.Create(token.GetPassword(16), model.UserModel.HashId);*/
+        //}
     }
 }

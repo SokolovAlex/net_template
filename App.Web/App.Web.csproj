@@ -212,9 +212,12 @@
     <Compile Include="Areas\Test\Controllers\RedisController.cs" />
     <Compile Include="Areas\Test\Models\SomeRedisModel.cs" />
     <Compile Include="Areas\Test\TestAreaRegistration.cs" />
+    <Compile Include="Filters\AppAuth.cs" />
+    <Compile Include="Filters\FakeAuth.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UserPrincipal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,7 +260,6 @@
     <Content Include="Areas\Auth\Views\Shared\_AuthLayout.cshtml" />
     <Content Include="Areas\Feedback\Views\FeedbackHome\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdminHome\Index.cshtml" />
-    <Content Include="Areas\Auth\Views\AuthHome\Index.cshtml" />
     <Content Include="Areas\Blog\Views\BlogHome\Details.cshtml" />
     <Content Include="Areas\Photo\Views\web.config" />
     <Content Include="Areas\Forum\Views\web.config" />
@@ -271,9 +273,11 @@
     <Content Include="Fonts\fontawesome-webfont.woff" />
     <Content Include="Fonts\fontawesome-webfont.woff2" />
     <Content Include="Fonts\FontAwesome.otf" />
+    <Content Include="Areas\Auth\Views\Auth\WelcomePage.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\app\config.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -305,14 +309,12 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Auth\Views\AuthHome\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Admin\Content\Images\" />
     <Folder Include="Areas\Admin\Content\Styles\" />
     <Folder Include="Areas\Admin\Scripts\" />
     <Folder Include="Areas\Auth\Content\Images\" />
-    <Folder Include="Areas\Auth\Views\NewFolder1\" />
     <Folder Include="Areas\Base\Content\Images\" />
     <Folder Include="Areas\Base\Scripts\" />
     <Folder Include="Areas\Blog\Content\Images\" />
@@ -328,6 +330,7 @@
     <Folder Include="Areas\Photo\Controllers\" />
     <Folder Include="Areas\Photo\Models\" />
     <Folder Include="Areas\Photo\Views\Shared\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -104,7 +104,10 @@
     <Compile Include="Concrete\Managers\Base\CategoryManager.cs" />
     <Compile Include="Concrete\Managers\Base\ReferenceManager.cs" />
     <Compile Include="Concrete\Managers\Base\UserManager.cs" />
+    <Compile Include="Helpers\HashHelper.cs" />
+    <Compile Include="Helpers\Interfaces\IHashHelper.cs" />
     <Compile Include="Helpers\Interfaces\IUserHelper.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

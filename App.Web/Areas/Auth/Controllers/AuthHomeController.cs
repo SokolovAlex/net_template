@@ -1,6 +1,8 @@
 ﻿using App.BLL.Helpers;
 using App.DTO.Models.Base;
 using App.Web.Areas.Auth.Services;
+using App.Web.Filters;
+using App.Web.Models;
 using System.Configuration;
 using System.Web.Mvc;
 
@@ -46,11 +48,18 @@ namespace App.Web.Areas.Auth.Controllers
             });
         }
 
+        public ActionResult WelcomePage(string accessToken)
+        {
+            var sessionHelper = new SessionHelper();
+            var user = sessionHelper.GetUser(accessToken);
+            return View("WelcomePage", user.Session);
+        }
+
         public ActionResult GoogleCallback(string code)
         {
             var helper = new UserHelper();
+            var hashHelper = new HashHelper();
             var conf = ConfigurationManager.AppSettings;
-            var GoogleUrl = AuthResponse.GetAutenticationURI(conf["ClientIdGoogle"], conf["CallbackGoogle"]);
 
             //Exchange the code for Access token and refreshtoken.
             AuthResponse access = AuthResponse.Exchange(code, conf["ClientIdGoogle"], conf["SecretGoogle"], conf["CallbackGoogle"]);
@@ -61,16 +70,30 @@ namespace App.Web.Areas.Auth.Controllers
 
             var profile = access.GetProfileInfo2();
 
-            helper.SaveUser(new UserModel {
+            var salt = hashHelper.GetSalt();
+
+            var userModel = new UserModel
+            {
                 Email = profile.email,
                 Name = profile.given_name,
                 IsActive = true,
                 Surname = profile.family_name,
                 Nickname = profile.email,
-                Password = profile.email
-            });
+                Avatar = profile.picture,
+                Salt = salt,
+                Password = hashHelper.GetSaltPassword("123456", salt)
+            };
 
-            return RedirectToAction("/");
+            helper.SaveUser(userModel);
+
+            var sessionHelper = new SessionHelper();
+            var sessionModel = sessionHelper.SessionCreate(userModel);
+
+            FakeAuth.Auth(this.HttpContext);
+
+            //return View("WelcomePage", sessionModel);
+            //return RedirectToAction("Index", "BaseHome", new { area = "Base"});
+            return RedirectToAction("WelcomePage", new { accessToken = sessionModel.AssessToken});
         }
     }
 }
