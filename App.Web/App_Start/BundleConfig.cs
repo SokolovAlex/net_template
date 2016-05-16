@@ -19,6 +19,7 @@ namespace App.Web
             bundles.Add(new ScriptBundle("~/js")
                 .Include("~/Scripts/jquery-{version}.js")
                 .Include("~/Scripts/jquery.validate.js")
+                .Include("~/Scripts/js-cookie/js.cookie.js")
                 .Include("~/Scripts/handlebars.js")
                 .Include("~/Scripts/bootstrap.js")
             );

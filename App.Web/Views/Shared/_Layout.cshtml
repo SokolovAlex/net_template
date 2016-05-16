@@ -17,9 +17,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.RouteUrl("News_Default", new { Controller = "NewsHome", Action = "Index" })">News</a></li>
-                    <li><a href="@Url.RouteUrl("Blog_Default", new { Controller = "BlogHome", Action = "Index" })">Blog</a></li>
                     <li><a href="@Url.RouteUrl("Feedback_Default", new { Controller = "FeedbackHome", Action = "Index" })">Feedback</a></li>
-                    <li><a href="@Url.RouteUrl("Admin_Default", new { Controller = "AdminHome", Action = "Index" })">(Admin)</a></li>
                     <li><a href="@Url.RouteUrl("Test_Default", new { Controller="Redis", Action="Index" })">(Redis Test)</a></li>
                     
                     @if (!HttpContext.Current.User.Identity.IsAuthenticated)
@@ -29,9 +27,15 @@
                             @{ Html.RenderAction("LoginForm", "Auth", new { area = "Auth" }); }
                         </li>
                     } else {
+                        var user = (App.Web.Models.UserPrincipal)HttpContext.Current.User;
 
-                        <li>!!!!</li>
-
+                        <li><a href="@Url.RouteUrl("Blog_Default", new { Controller = "BlogHome", Action = "Index" })">Blog</a></li>
+                        <li><a href="@Url.RouteUrl("Admin_Default", new { Controller = "AdminHome", Action = "Index" })">(Admin)</a></li>
+                        <li>
+                            <img src="@user.UserDetails.UserModel.Avatar" style="width: 40px; height: 40px;" alt=""/>
+                            <span>@user.UserDetails.UserModel.Nickname</span>
+                            <i class="logout_menu">log out </i>
+                        </li>
                     }
 
 

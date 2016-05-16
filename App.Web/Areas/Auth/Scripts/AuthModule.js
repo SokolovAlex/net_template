@@ -28,6 +28,8 @@
         setToken: function (token) {
             token = token;
             isAuth = true;
+
+            Cookies.set('x-access-token', token);
         }
     };
 

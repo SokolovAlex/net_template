@@ -1,4 +1,5 @@
 ﻿using App.BLL.Helpers;
+using App.DTO.Models.Base;
 using App.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,22 @@ namespace App.Web.Filters
                 var principal = new UserPrincipal(new GenericIdentity(tokens.First()), new string[0])
                 {
                     UserDetails = user
+                };
+                Thread.CurrentPrincipal = principal;
+                HttpContext.Current.User = principal;
+                return true;
+            }
+            return false;
+
+        }
+
+        public static bool Auth2(UserSessionModel model)
+        {
+            if (model != null)
+            {
+                var principal = new UserPrincipal(new GenericIdentity(model.Session.AssessToken), new string[0])
+                {
+                    UserDetails = model
                 };
                 Thread.CurrentPrincipal = principal;
                 HttpContext.Current.User = principal;

@@ -4,6 +4,7 @@ using App.Web.Areas.Auth.Services;
 using App.Web.Filters;
 using App.Web.Models;
 using System.Configuration;
+using System.Web;
 using System.Web.Mvc;
 
 namespace App.Web.Areas.Auth.Controllers
@@ -48,10 +49,12 @@ namespace App.Web.Areas.Auth.Controllers
             });
         }
 
+        [App.Web.Filters.ExAuthorize]
         public ActionResult WelcomePage(string accessToken)
         {
             var sessionHelper = new SessionHelper();
             var user = sessionHelper.GetUser(accessToken);
+            FakeAuth.Auth2(user);
             return View("WelcomePage", user.Session);
         }
 
@@ -89,7 +92,7 @@ namespace App.Web.Areas.Auth.Controllers
             var sessionHelper = new SessionHelper();
             var sessionModel = sessionHelper.SessionCreate(userModel);
 
-            FakeAuth.Auth(this.HttpContext);
+            
 
             //return View("WelcomePage", sessionModel);
             //return RedirectToAction("Index", "BaseHome", new { area = "Base"});
