@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Users</h2>
+
+<div id="container">
+
+</div>
+
+@section js {
+    <script src="~/Scripts/app/dataTable.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var options = {
+                dataUrl: '/api/users',
+                filter: {},
+                sortValue: '',
+                page: 0,
+                template: $('#tableTemplate').html(),
+                columns: [],
+                actions: [],
+                pager: true
+            };
+            
+            var table = new window.DataTable($('#container'), options);
+            table.render();
+        });
+    </script>
+
+    <script id="tableTemplate">
+
+
+    </script>
+
+    <script id="pagerTemplate">
+
+
+    </script>
+}
+

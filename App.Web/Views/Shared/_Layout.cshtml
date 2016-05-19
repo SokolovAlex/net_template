@@ -30,14 +30,14 @@
                         var user = (App.Web.Models.UserPrincipal)HttpContext.Current.User;
 
                         <li><a href="@Url.RouteUrl("Blog_Default", new { Controller = "BlogHome", Action = "Index" })">Blog</a></li>
+                        <li><a href="@Url.RouteUrl("Base_Default", new { Controller = "BaseHome", Action = "Users" })">Users</a></li>
                         <li><a href="@Url.RouteUrl("Admin_Default", new { Controller = "AdminHome", Action = "Index" })">(Admin)</a></li>
                         <li>
                             <img src="@user.UserDetails.UserModel.Avatar" style="width: 40px; height: 40px;" alt=""/>
                             <span>@user.UserDetails.UserModel.Nickname</span>
-                            <i class="logout_menu">log out </i>
+                            <i class="logout_menu">log outS</i>
                         </li>
                     }
-
 
                 </ul>
             </div>

@@ -195,6 +195,7 @@
     <Compile Include="Areas\Auth\Services\Interfaces\ISocialHelper.cs" />
     <Compile Include="Areas\Auth\Services\SocialHelper.cs" />
     <Compile Include="Areas\Base\BaseAreaRegistration.cs" />
+    <Compile Include="Areas\Base\Controllers\apiUsersController.cs" />
     <Compile Include="Areas\Base\Controllers\BaseHomeController.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
     <Compile Include="Areas\Blog\Controllers\BlogHomeController.cs" />
@@ -274,10 +275,14 @@
     <Content Include="Fonts\fontawesome-webfont.woff2" />
     <Content Include="Fonts\FontAwesome.otf" />
     <Content Include="Areas\Auth\Views\Auth\WelcomePage.cshtml" />
+    <Content Include="Areas\Base\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Base\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Base\Views\BaseHome\Users.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem.pubxml" />
     <None Include="Properties\PublishProfiles\Staging.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\app\config.js" />
+    <Content Include="Scripts\app\dataTable.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />

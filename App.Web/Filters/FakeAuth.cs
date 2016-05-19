@@ -33,6 +33,27 @@ namespace App.Web.Filters
 
         }
 
+        public static bool Auth(HttpControllerContext actionContext)
+        {
+            IEnumerable<string> tokens = actionContext.Request.Headers.GetValues("X-ACCESS-TOKEN");
+            if (tokens == null || !tokens.Any()) return false;
+
+            var helper = new SessionHelper();
+            var user = helper.GetUser(tokens.First());
+            if (user != null)
+            {
+                var principal = new UserPrincipal(new GenericIdentity(tokens.First()), new string[0])
+                {
+                    UserDetails = user
+                };
+                Thread.CurrentPrincipal = principal;
+                HttpContext.Current.User = principal;
+                return true;
+            }
+            return false;
+
+        }
+
         public static bool Auth2(UserSessionModel model)
         {
             if (model != null)

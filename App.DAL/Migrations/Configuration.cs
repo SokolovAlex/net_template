@@ -45,6 +45,84 @@ namespace App.DAL.Migrations
                 }
             );
 
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 111,
+                    Name = "Gogol",
+                    Surname = "Bardello",
+                    Email = "Bardello@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 222,
+                    Name = "Kuchma",
+                    Surname = "Kuchma",
+                    Email = "Kuchma@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 333,
+                    Name = "Pushkin",
+                    Surname = "Pushkin",
+                    Email = "Pushkin@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
+
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 444,
+                    Name = "Sartr",
+                    Surname = "Sartr",
+                    Email = "Sartr@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 555,
+                    Name = "Gesse",
+                    Surname = "Gesse",
+                    Email = "Gesse@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 666,
+                    Name = "Miller",
+                    Surname = "Miller",
+                    Email = "Miller@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
+            context.User.AddOrUpdate(p => p.Id,
+                new UserEntity
+                {
+                    Id = 777,
+                    Name = "Bart",
+                    Surname = "Bart",
+                    Email = "Bart@magora-systems.ru",
+                    IsActive = true
+                }
+            );
+
             context.SaveChanges();
         }
 

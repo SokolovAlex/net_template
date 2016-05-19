@@ -55,6 +55,9 @@ namespace App.Web.Areas.Auth.Controllers
             var sessionHelper = new SessionHelper();
             var user = sessionHelper.GetUser(accessToken);
             FakeAuth.Auth2(user);
+
+            HttpContext.Response.Cookies.Add(new HttpCookie(accessToken));
+
             return View("WelcomePage", user.Session);
         }
 
